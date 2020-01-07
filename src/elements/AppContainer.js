@@ -10,7 +10,7 @@ class AppContainer extends PureComponent {
       <SafeAreaView
         forceInset={{...forceInset}}
         style={[styles.container, style]}>
-        <StatusBar barStyle={'dark-content'} />
+        <StatusBar barStyle="light-content" />
         {children}
       </SafeAreaView>
     );
