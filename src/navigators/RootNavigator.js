@@ -16,10 +16,13 @@ const AppStack = createStackNavigator({
   Programs: {screen: Programs},
   Introduce: {screen: Introduce},
 });
-const AuthStack = createStackNavigator({Login: Login});
+const AuthStack = createStackNavigator(
+  {Login: {screen: Login}},
+  {headerMode: 'none'},
+);
 
 export default createAppContainer(
-  createStackNavigator(
+  createSwitchNavigator(
     {
       AppIntro: {screen: AppIntro},
       Auth: {screen: AuthStack},

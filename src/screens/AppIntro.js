@@ -8,7 +8,7 @@ import SplashScreen from 'react-native-splash-screen';
 export class AppIntro extends PureComponent {
   componentDidMount() {
     this._bootstrapAsync();
-    // SplashScreen.hide();
+    SplashScreen.hide();
   }
 
   // Fetch the token from storage then navigate to our appropriate place
