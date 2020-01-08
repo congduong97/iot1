@@ -1,16 +1,14 @@
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import {createDrawerNavigator} from 'react-navigation-drawer';
-import Home from '../screens/Home';
-import Setting from '../screens/Setting';
-import Programs from '../screens/Programs';
-import Introduce from '../screens/Introduce';
-import AppIntro from '../screens/AppIntro';
-import Login from '../screens/Login';
+import Home from '../screens/Home/Home';
+import Setting from '../screens/Setting/Setting';
+import Programs from '../screens/Programs/Programs';
+import Introduce from '../screens/Introduce/Introduce';
+import AppIntro from '../screens/AppIntro/AppIntro';
+import Login from '../screens/Login/Login';
 import {SIZE} from '../utils/resource';
-
-// Implementation of HomeScreen, OtherScreen, SignInScreen, AuthLoadingScreen
-// goes here.
+import ContentComponent from '../screens/Home/items/ContentComponent';
 
 const AppStack = createDrawerNavigator(
   {
@@ -21,8 +19,12 @@ const AppStack = createDrawerNavigator(
   },
   {
     initialRouteName: 'Home',
-    drawerWidth: SIZE.width(60),
+    drawerWidth: SIZE.width(70),
+    contentComponent: ContentComponent,
     drawerPosition: 'left',
+    contentOptions: {
+      activeBackgroundColor: 'red',
+    },
   },
 );
 const AuthStack = createStackNavigator(

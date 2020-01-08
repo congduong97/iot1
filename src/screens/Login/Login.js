@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Text, View, TextInput, TouchableOpacity} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import {AppContainer} from '../elements';
-import {COLOR, SIZE} from '../utils/resource';
+import {AppContainer} from '../../elements';
+import {COLOR, SIZE} from '../../utils/resource';
 export class Login extends Component {
   constructor(props) {
     super(props);

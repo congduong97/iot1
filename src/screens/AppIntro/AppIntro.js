@@ -1,8 +1,8 @@
 import React, {PureComponent} from 'react';
 import {Text, View} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import {AppContainer} from '../elements';
-import {COLOR} from '../utils/resource';
+import {AppContainer} from '../../elements';
+import {COLOR} from '../../utils/resource';
 import SplashScreen from 'react-native-splash-screen';
 
 export class AppIntro extends PureComponent {

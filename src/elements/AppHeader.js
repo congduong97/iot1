@@ -96,7 +96,7 @@ class Header extends PureComponent {
           <AppIconButton
             hitSlop={{top: 10, bottom: 10, left: 20, right: 20}}
             icon={{
-              iconName: ICONS.Ionicons_md_arrow_round_back,
+              iconName: 'md-arrow-round-back',
               iconType: 'Ionicons',
               iconColor: COLOR.main_color,
               iconSize: SIZE.H1 * 1.3,
@@ -229,14 +229,11 @@ const styles = StyleSheet.create({
     borderColor: COLOR.BG_TRANSPARENT_70,
     borderBottomWidth: 0,
     shadowColor: COLOR.grey_300,
-    shadowOpacity: 1,
+    shadowOpacity: 0.6,
     shadowOffset: {width: 0, height: 2},
     shadowRadius: 4,
   },
 });
-// const AHeader = copilot({
-//   animated: true, // Can be true or false
-//   overlay: "svg"
-// })(Header);
+
 const AppHeader = withNavigation(Header);
 export {AppHeader};

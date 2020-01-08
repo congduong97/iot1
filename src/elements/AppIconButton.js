@@ -1,11 +1,12 @@
 import React from 'react';
-import {TouchableCo, AppIcon} from '../elements';
+import {AppIcon} from '../elements';
+import {TouchableOpacity} from 'react-native';
 
-const AppIconButton = (props) => {
+const AppIconButton = props => {
   const {onPress, icon, style, hitSlop} = props;
   const {iconName, iconColor, iconSize, iconType} = icon;
   return (
-    <TouchableCo
+    <TouchableOpacity
       onPress={onPress}
       hitSlop={hitSlop}
       style={[
@@ -23,7 +24,7 @@ const AppIconButton = (props) => {
         iconColor={iconColor}
         iconSize={iconSize}
       />
-    </TouchableCo>
+    </TouchableOpacity>
   );
 };
 
