@@ -22,11 +22,7 @@ export class AppIntro extends PureComponent {
 
   // Render any loading content that you like here
   render() {
-    return (
-      <AppContainer>
-        <Text>SplashScreen</Text>
-      </AppContainer>
-    );
+    return <View></View>;
   }
 }
 
