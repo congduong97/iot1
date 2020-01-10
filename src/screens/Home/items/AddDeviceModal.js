@@ -9,7 +9,7 @@ import {DeviceService} from '../Services/DeviceService';
 export default class AddDeviceModal extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {isVisible: false, devices: []};
+    this.state = {isVisible: false, deviceNumber: 1};
   }
 
   componentDidMount() {
@@ -29,24 +29,29 @@ export default class AddDeviceModal extends PureComponent {
   };
 
   addDevice = () => {
-    DeviceService.setDevice(this.state.devices);
+    const {deviceNumber} = this.state;
+    const devices = Math.pow(2, deviceNumber);
+    DeviceService.setDevice(devices);
     this.closeModal();
   };
 
   increaseDevice = () => {
-    this.setState({devices: [...this.state.devices, {}]});
-  };
-  decreaseDevice = () => {
-    let {devices} = this.state;
-    if (devices.length === 0) {
+    const {deviceNumber} = this.state;
+    if (deviceNumber === 5) {
       return;
     }
-    this.state.devices.pop();
-    this.setState({devices: [...this.state.devices]});
+    this.setState({deviceNumber: deviceNumber + 1});
+  };
+  decreaseDevice = () => {
+    const {deviceNumber} = this.state;
+    if (deviceNumber === 1) {
+      return;
+    }
+    this.setState({deviceNumber: deviceNumber - 1});
   };
 
   renderAddDevice = () => {
-    const {isVisible, devices} = this.state;
+    const {isVisible, deviceNumber} = this.state;
     return (
       <View
         style={{
@@ -67,21 +72,35 @@ export default class AddDeviceModal extends PureComponent {
                 flexDirection: 'row',
                 justifyContent: 'center',
               }}>
-              <TouchableOpacity onPress={this.decreaseDevice}>
-                <Icon name="minus" size={2 * SIZE.H5} color="#355cab" />
+              <TouchableOpacity
+                hitSlop={{
+                  op: SIZE.padding,
+                  bottom: SIZE.padding,
+                  right: SIZE.padding,
+                  left: SIZE.padding,
+                }}
+                onPress={this.decreaseDevice}>
+                <Icon name="minus" size={2 * SIZE.H5} color={COLOR.black} />
               </TouchableOpacity>
               <Text
                 style={{
                   width: SIZE.width(30),
                   textAlign: 'center',
                   fontSize: SIZE.H2,
-                  color: COLOR.main_color,
+                  color: COLOR.black,
                 }}>
-                {devices.length}
+                {Math.pow(2, deviceNumber)}
               </Text>
 
-              <TouchableOpacity onPress={this.increaseDevice}>
-                <Icon name="plus" size={2 * SIZE.H5} color="#355cab" />
+              <TouchableOpacity
+                hitSlop={{
+                  op: SIZE.padding,
+                  bottom: SIZE.padding,
+                  right: SIZE.padding,
+                  left: SIZE.padding,
+                }}
+                onPress={this.increaseDevice}>
+                <Icon name="plus" size={2 * SIZE.H5} color={COLOR.black} />
               </TouchableOpacity>
             </View>
           </View>
@@ -93,7 +112,7 @@ export default class AddDeviceModal extends PureComponent {
             <TouchableOpacity
               onPress={this.addDevice}
               style={{
-                backgroundColor: COLOR.main_color,
+                backgroundColor: COLOR.blue,
                 width: SIZE.width(30),
                 paddingVertical: SIZE.padding,
                 borderRadius: 8,
@@ -101,7 +120,7 @@ export default class AddDeviceModal extends PureComponent {
               <Text
                 style={{
                   color: 'white',
-                  backgroundColor: COLOR.main_color,
+                  backgroundColor: COLOR.blue,
                   textAlign: 'center',
                   fontSize: SIZE.H5,
                 }}>
@@ -111,7 +130,7 @@ export default class AddDeviceModal extends PureComponent {
             <TouchableOpacity
               onPress={this.closeModal}
               style={{
-                backgroundColor: COLOR.main_color,
+                backgroundColor: COLOR.blue,
                 width: SIZE.width(30),
                 paddingVertical: SIZE.padding,
                 borderRadius: 8,
@@ -119,7 +138,7 @@ export default class AddDeviceModal extends PureComponent {
               <Text
                 style={{
                   color: 'white',
-                  backgroundColor: COLOR.main_color,
+                  backgroundColor: COLOR.blue,
                   textAlign: 'center',
                   fontSize: SIZE.H5,
                 }}>
@@ -137,7 +156,7 @@ export default class AddDeviceModal extends PureComponent {
       <Text
         style={{
           fontSize: SIZE.H3,
-          backgroundColor: COLOR.main_color,
+          backgroundColor: COLOR.blue,
           color: 'white',
           textAlign: 'center',
           padding: SIZE.padding,
@@ -155,9 +174,11 @@ export default class AddDeviceModal extends PureComponent {
         style={{margin: SIZE.padding}}
         onBackdropPress={this.closeModal}
         animationIn="zoomInDown"
-        animationOut="zoomOutUp"
-        animationInTiming={600}
-        animationOutTiming={600}>
+        animationType="fade"
+        hideModalContentWhileAnimating={true}
+        useNativeDriver={true}
+        transparent={true}
+        animationOut="zoomOutUp">
         {this.renderAddDevice()}
       </Modal>
     );

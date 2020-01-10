@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, FlatList, TouchableOpacity} from 'react-native';
+import {Text, View, FlatList, TouchableOpacity, Modal} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-community/async-storage';
 import {SIZE, COLOR} from '../../utils/resource';
@@ -9,6 +9,9 @@ import AddDeviceModal from './items/AddDeviceModal';
 import {DeviceService} from './Services/DeviceService';
 import DeviceItem from './items/DeviceItem';
 import DetailItemModal from './items/DetailItemModal';
+import CreateRoomModal from './items/CreateRoomModal';
+import MoreMenuModal from './items/MoreMenuModal';
+import {ModalServive} from './Services/ModalService';
 
 export class Home extends Component {
   constructor(props) {
@@ -36,15 +39,36 @@ export class Home extends Component {
           right: SIZE.padding,
         }}
         onPress={this.renderToggleDrawer}>
-        <Icon name="ios-menu" size={2 * SIZE.H4} color="#355cab" />
+        <Icon name="ios-menu" size={2 * SIZE.H4} color={COLOR.white} />
       </TouchableOpacity>
     );
   };
+
+  renderRightHeader = () => {
+    return (
+      <TouchableOpacity
+        hitSlop={{
+          top: SIZE.padding,
+          bottom: SIZE.padding,
+          left: SIZE.padding,
+          right: SIZE.padding,
+        }}
+        onPress={this.renderMoreMenu}>
+        <Icon name="md-more" size={2 * SIZE.H5} color={COLOR.white} />
+      </TouchableOpacity>
+    );
+  };
+
   renderToggleDrawer = () => {
     this.props.navigation.dispatch(DrawerActions.toggleDrawer());
   };
+
+  renderMoreMenu = () => {
+    ModalServive.setVisible('more-menu');
+  };
+
   renderTitle = () => {
-    return <Text style={{color: '#355cab', fontSize: SIZE.H3}}>Home</Text>;
+    return <Text style={{color: COLOR.white, fontSize: SIZE.H3}}>Home</Text>;
   };
 
   renderDevices = ({item, index}) => {
@@ -58,7 +82,9 @@ export class Home extends Component {
         <AppHeader
           renderLeft={this.renderLeftHeader}
           renderTitle={this.renderTitle}
+          renderRight={this.renderRightHeader}
         />
+
         <View
           style={{
             flexDirection: 'row',
@@ -90,6 +116,9 @@ export class Home extends Component {
           renderItem={this.renderDevices}
           keyExtractor={(item, index) => '' + index}
         />
+
+        <MoreMenuModal />
+        <CreateRoomModal />
         <DetailItemModal />
         <AddDeviceModal ref={this.addDevice} />
       </AppContainer>

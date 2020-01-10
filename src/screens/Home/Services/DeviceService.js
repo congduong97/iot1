@@ -5,7 +5,11 @@ function broadcast() {
 let data = [];
 
 const DeviceService = {
-  setDevice: newData => {
+  setDevice: devices => {
+    let newData = [];
+    for (let index = 0; index < devices; index++) {
+      newData.push(index);
+    }
     data = [...newData];
     broadcast();
   },

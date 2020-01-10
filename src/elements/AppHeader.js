@@ -96,9 +96,9 @@ class Header extends PureComponent {
           <AppIconButton
             hitSlop={{top: 10, bottom: 10, left: 20, right: 20}}
             icon={{
-              iconName: 'md-arrow-round-back',
+              iconName: 'ios-arrow-back',
               iconType: 'Ionicons',
-              iconColor: COLOR.main_color,
+              iconColor: COLOR.white,
               iconSize: SIZE.H1 * 1.3,
             }}
             onPress={onPress}
@@ -219,11 +219,11 @@ class Header extends PureComponent {
 const styles = StyleSheet.create({
   container: {
     width: SIZE.device_width,
-    height: 2 * SIZE.H2,
+    height: 2 * SIZE.H1,
     elevation: 2,
     zIndex: 1,
     flexDirection: 'row',
-    backgroundColor: COLOR.white,
+    backgroundColor: COLOR.blue,
     justifyContent: 'center',
     alignItems: 'center',
     borderColor: COLOR.BG_TRANSPARENT_70,

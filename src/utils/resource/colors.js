@@ -1,7 +1,9 @@
 const COLOR = {
-  white: '#FFF',
+  white: '#ffffff',
   dark: '#2A2A2A',
-  main_color: '#355cab',
+  red: '#ff0000',
+  main_color: 'rgb(0, 0, 255)',
+  blue: '#068cff',
   //
   TRANSPARENT: 'transparent',
   BG_TRANSPARENT_30: 'rgba(0,0,0,0.3)',

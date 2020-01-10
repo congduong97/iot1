@@ -7,6 +7,7 @@ import Programs from '../screens/Programs/Programs';
 import Introduce from '../screens/Introduce/Introduce';
 import AppIntro from '../screens/AppIntro/AppIntro';
 import Login from '../screens/Login/Login';
+import CreateRoom from '../screens/CreateRoom/CreateRoom';
 import {SIZE} from '../utils/resource';
 import ContentComponent from '../screens/Home/items/ContentComponent';
 
@@ -15,6 +16,7 @@ const AppStack = createDrawerNavigator(
     Home: {screen: Home},
     Setting: {screen: Setting},
     Programs: {screen: Programs},
+    CreateRoom: {screen: CreateRoom},
     Introduce: {screen: Introduce},
   },
   {

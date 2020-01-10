@@ -23,9 +23,9 @@ export default class ContentComponent extends PureComponent {
                 alignSelf: 'center',
                 marginVertical: SIZE.padding * 2,
               }}
+              resizeMode="center"
               source={require('../../../utils/images/launch_screen.png')}
             />
-
             <TouchableOpacity
               onPress={() => {
                 this.props.navigation.dispatch(DrawerActions.toggleDrawer());
@@ -39,12 +39,12 @@ export default class ContentComponent extends PureComponent {
                 backgroundColor:
                   this.props.activeItemKey === 'Home' ? COLOR.grey_300 : null,
               }}>
-              <Icon name="ios-home" size={2 * SIZE.H4} color="#355cab" />
+              <Icon name="ios-home" size={2 * SIZE.H5} color={COLOR.black} />
               <Text
                 style={{
                   fontSize: SIZE.H4,
                   paddingLeft: SIZE.padding * 2,
-                  color: '#355cab',
+                  color: COLOR.black,
                 }}>
                 Home
               </Text>
@@ -63,12 +63,16 @@ export default class ContentComponent extends PureComponent {
                     ? COLOR.grey_300
                     : null,
               }}>
-              <Icon name="ios-play-circle" size={2 * SIZE.H4} color="#355cab" />
+              <Icon
+                name="ios-play-circle"
+                size={2 * SIZE.H5}
+                color={COLOR.black}
+              />
               <Text
                 style={{
                   fontSize: SIZE.H4,
                   paddingLeft: SIZE.padding * 2,
-                  color: '#355cab',
+                  color: COLOR.black,
                 }}>
                 Programs
               </Text>
@@ -87,12 +91,16 @@ export default class ContentComponent extends PureComponent {
                     ? COLOR.grey_300
                     : null,
               }}>
-              <Icon name="ios-settings" size={2 * SIZE.H4} color="#355cab" />
+              <Icon
+                name="ios-settings"
+                size={2 * SIZE.H5}
+                color={COLOR.black}
+              />
               <Text
                 style={{
                   fontSize: SIZE.H4,
                   paddingLeft: SIZE.padding * 2,
-                  color: '#355cab',
+                  color: COLOR.black,
                 }}>
                 Settings
               </Text>
@@ -110,12 +118,12 @@ export default class ContentComponent extends PureComponent {
                 backgroundColor:
                   this.props.activeItemKey === 'Reload' ? COLOR.grey_300 : null,
               }}>
-              <Icon name="ios-refresh" size={2 * SIZE.H4} color="#355cab" />
+              <Icon name="ios-refresh" size={2 * SIZE.H5} color={COLOR.black} />
               <Text
                 style={{
                   fontSize: SIZE.H4,
                   paddingLeft: SIZE.padding * 2,
-                  color: '#355cab',
+                  color: COLOR.black,
                 }}>
                 Reload Device
               </Text>
@@ -124,7 +132,7 @@ export default class ContentComponent extends PureComponent {
               style={{
                 height: 1,
                 width: SIZE.width(70),
-                backgroundColor: '#355cab',
+                backgroundColor: COLOR.black,
                 position: 'relative',
                 left: SIZE.padding * -1,
               }}></View>
@@ -152,14 +160,14 @@ export default class ContentComponent extends PureComponent {
               }}>
               <Icon
                 name="ios-information-circle-outline"
-                size={2 * SIZE.H4}
-                color="#355cab"
+                size={2 * SIZE.H5}
+                color={COLOR.black}
               />
               <Text
                 style={{
                   fontSize: SIZE.H4,
                   paddingLeft: SIZE.padding * 2,
-                  color: '#355cab',
+                  color: COLOR.black,
                 }}>
                 Introduce
               </Text>
